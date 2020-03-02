@@ -1,6 +1,8 @@
 workspace 'ARTiledImageView'
 
-pod 'ARTiledImageView', :path => 'ARTiledImageView.podspec'
+target 'Demo' do
+  pod 'ARTiledImageView', :path => 'ARTiledImageView.podspec'
+end
 
 target 'IntegrationTests' do
   pod 'Specta'
