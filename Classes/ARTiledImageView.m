@@ -10,6 +10,7 @@
 #import "ARTile.h"
 #import <QuartzCore/CATiledLayer.h>
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <SDWebImage/SDWebImageDownloader.h>
 
 // ARTiledImageView responds to rectangle repaint, figures out which tile
 // to download from that rectangle and downloads tiles asynchronously.
@@ -54,6 +55,9 @@
     _tileCache = [[NSCache alloc] init];
     _downloadOperations = [[NSMutableDictionary alloc] init];
 
+    // FIXME: take this out of lib
+    [SDWebImageDownloader.sharedDownloader setValue:@"bearer 3a0f29a2-70c6-4dbd-a9d2-a06704f726b3" forHTTPHeaderField:@"Authorization"];
+    
     return self;
 }
 
@@ -167,7 +171,9 @@
         }
 
         id <SDWebImageOperation> operation = nil;
-        operation = [SDWebImageManager.sharedManager downloadWithURL:tileURL options:0 progress:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished) {
+        operation = [[SDWebImageManager sharedManager] loadImageWithURL:tileURL
+                                                                options:0
+                                                               progress:nil completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
             if (!wself || !finished) {
                 return;
             }

@@ -40,7 +40,13 @@
         _dataSource = localDataSource;
     } else {
         ARWebTiledImageDataSource *webDataSource = [[ARWebTiledImageDataSource alloc] init];
-        webDataSource.tileBaseURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/tiles", self.tilesURL.absoluteString]];
+        
+        if (self.isSlide) {
+            webDataSource.tileBaseURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/thoslide", self.tilesURL.absoluteString]];
+        } else {
+            webDataSource.tileBaseURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/tiles", self.tilesURL.absoluteString]];
+        }
+        
         webDataSource.maxTiledHeight = self.tiledSize.height;
         webDataSource.maxTiledWidth = self.tiledSize.width;
         webDataSource.minTileLevel = self.minTileLevel;

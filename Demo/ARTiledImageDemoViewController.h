@@ -20,4 +20,6 @@
 
 @property (nonatomic, readonly) ARTiledImageScrollView *scrollView;
 
+@property (nonatomic, assign) BOOL isSlide;
+
 @end

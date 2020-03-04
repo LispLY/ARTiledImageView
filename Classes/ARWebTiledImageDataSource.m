@@ -13,7 +13,8 @@
 
 - (NSURL *)tiledImageView:(ARTiledImageView *)imageView urlForImageTileAtLevel:(NSInteger)level x:(NSInteger)x y:(NSInteger)y
 {
-    return [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@/%@_%@.%@", self.tileBaseURL.absoluteString, @(level), @(x), @(y), self.tileFormat]];
+    // FIXME: take this out of lib
+    return [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@/%@_%@.%@?path=%@", self.tileBaseURL.absoluteString, @(level), @(x), @(y), self.tileFormat, @"/data2/2020-02-26/1418228-A8/1418568-A8%20-%202019-03-24%2019.53.12.ndpi"]];
 }
 
 

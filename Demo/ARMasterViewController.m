@@ -33,7 +33,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return 5;
 }
 
 
@@ -59,6 +59,9 @@
             break;
         case 3:
             cell.textLabel.text = @"Goya: Señora S. Garcia (Web)";
+            break;
+        case 4:
+            cell.textLabel.text = @"Slide";
             break;
         default:
             break;
@@ -101,6 +104,27 @@
         vc.tiledSize = CGSizeMake(2383, 2933);
         vc.minTileLevel = 11;
         vc.maxTileLevel = 12;
+        [self.navigationController pushViewController:vc animated:YES];
+    } else if (indexPath.row == 4) {
+        ARTiledImageDemoViewController *vc = [[ARTiledImageDemoViewController alloc] init];
+        vc.tilesURL = [NSURL URLWithString:@"http://106.13.121.211:28080"];
+        vc.tiledSize = CGSizeMake(91264, 54784); //fake
+        vc.minTileLevel = 8;
+        vc.maxTileLevel = 17;
+        vc.isSlide = true;
+        
+        /*
+        "maxLevel": 17,
+        "minLevel": 8,
+        "path": "/data1/2020-02-26/1418227-A5/1475654-A5 - 2019-07-17 17.37.56.ndpi",
+        "overlap": 0,
+        "tileSize": 512,
+        "width": 91264,
+        "pixelSize": 0.22675736,
+        "height": 54784
+         */
+//        let tileSize: CGFloat = 512.0 // in pixel
+
         [self.navigationController pushViewController:vc animated:YES];
     }
 }
