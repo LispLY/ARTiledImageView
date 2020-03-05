@@ -14,6 +14,7 @@
 @property (nonatomic, readonly, assign) NSInteger tileZoomLevel;
 
 /// Convert a point at full zoom scale to the same one at the current zoom scale.
+/// Not Used
 - (CGPoint)zoomRelativePoint:(CGPoint)point;
 
 /// Center image on a given point.

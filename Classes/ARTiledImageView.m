@@ -108,7 +108,7 @@
         for (NSInteger col = firstCol; col <= lastCol; col++) {
 
             CGRect tileRect = CGRectMake(tileSize.width * col, tileSize.height * row, tileSize.width, tileSize.height);
-            UIImage *tileImage = [self.dataSource tiledImageView:self imageTileForLevel:level x:col y:row];
+            UIImage *tileImage = [self.dataSource tiledImageView:self imageTileForLevel:level x:col y:row]; // tileImage 本地文件中的图片
 
             NSString *tileCacheKey = [NSString stringWithFormat:@"%@/%@_%@", @(level), @(col), @(row)];
             ARTile *tile = [self.tileCache objectForKey:tileCacheKey];
@@ -122,7 +122,7 @@
                 tile.tileImage = tileImage;
             }
 
-            if (!tile.tileImage) {
+            if (!tile.tileImage) { // 本地没有图片文件
                 if (isRemote) {
                     NSURL *tileURL = [self.dataSource tiledImageView:self urlForImageTileAtLevel:level x:col y:row];
                     [requestURLs setValue:tileURL forKey:tileCacheKey];

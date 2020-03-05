@@ -42,13 +42,13 @@
     [UIImageJPEGRepresentation(image, 1.0) writeToFile:pathWithFilename atomically:YES];
 }
 
-
+// imageView Not Used
 - (CGSize)imageSizeForImageView:(ARTiledImageView *)imageView
 {
     return CGSizeMake(self.maxTiledWidth, self.maxTiledHeight);
 }
 
-
+// imageView Not Used
 - (CGSize)tileSizeForImageView:(ARTiledImageView *)imageView
 {
     return CGSizeMake(self.tileSize, self.tileSize);
